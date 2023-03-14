@@ -21,7 +21,6 @@
 // This is part of revision 2.1.4.178 of the EK-TM4C123GXL Firmware Package.
 //
 //*****************************************************************************
-
 #include <stdint.h>
 #include "inc/hw_nvic.h"
 #include "inc/hw_types.h"

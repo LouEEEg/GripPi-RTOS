@@ -43,13 +43,6 @@
 
 //*****************************************************************************
 //
-// UART Parameters
-//
-//*****************************************************************************
-#define UART_BUFFERED 8
-
-//*****************************************************************************
-//
 // The stack size for the display task.
 //
 //*****************************************************************************
@@ -71,11 +64,6 @@ SwitchTask(void *pvParameters)
     uint8_t ui8CurButtonState, ui8PrevButtonState;
     uint8_t ui8Message;
 
-    int uart_rdata_state = 0;
-    char *uart_rdata = (char*)pvPortMalloc(32*sizeof(char));
-
-    int UART_rSTATUS = 0;
-
     ui8CurButtonState = ui8PrevButtonState = 0;
 
 
@@ -94,18 +82,9 @@ SwitchTask(void *pvParameters)
         //
         ui8CurButtonState = ButtonsPoll(0, 0);
 
-        uart_rdata_state = UARTgets(uart_rdata, sizeof(uart_rdata));
-
-        if(UART_rSTATUS > 0){
-            UARTprintf("%c", uart_rdata);
-        }
-
         //
         // Check if previous debounced state is equal to the current state.
         //
-
-
-
 
 
         if(ui8CurButtonState != ui8PrevButtonState)

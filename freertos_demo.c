@@ -34,6 +34,7 @@
 #include "utils/uartstdio.h"
 #include "led_task.h"
 #include "switch_task.h"
+#include "uart_task.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -75,7 +76,6 @@
 //! http://www.freertos.org/
 //
 //*****************************************************************************
-
 
 //*****************************************************************************
 //
@@ -120,6 +120,7 @@ vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
 // Configure the UART and its pins.  This must be called before UARTprintf().
 //
 //*****************************************************************************
+
 void
 ConfigureUART(void)
 {
@@ -173,7 +174,7 @@ main(void)
     //
     // Print demo introduction.
     //
-    UARTprintf("\n\nWelcome to the EK-TM4C123GXL FreeRTOS Demo!\n");
+    UARTprintf("\n\nGripPi Operating System...\n");
 
     //
     // Create a mutex to guard the UART.
@@ -197,6 +198,16 @@ main(void)
     if(SwitchTaskInit() != 0)
     {
 
+        while(1)
+        {
+        }
+    }
+
+    //
+    // Create the uart task
+    //
+    if(UartTaskInit() != 0)
+    {
         while(1)
         {
         }
