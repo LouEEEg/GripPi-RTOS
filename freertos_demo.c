@@ -84,6 +84,8 @@
 //*****************************************************************************
 xSemaphoreHandle g_pUARTSemaphore;
 
+
+#define UART_BUFFERED 128
 //*****************************************************************************
 //
 // The error routine that is called if the driver library encounters an error.
